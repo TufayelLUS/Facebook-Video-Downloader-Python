@@ -85,5 +85,5 @@ def downloadVideo(link):
 if __name__ == "__main__":
     if not os.path.exists(output_folder):
         os.mkdir(output_folder)
-    downloadVideo("https://web.facebook.com/rabbids/videos/7350686091725184/")
+    downloadVideo(input("Enter the video URL: "))
     print("Done! Please check in the {} folder".format(output_folder))
