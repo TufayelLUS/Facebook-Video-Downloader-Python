@@ -44,17 +44,23 @@ def downloadVideo(link):
         'Viewport-Width': '1463'
     }
     try:
-        resp = requests.get(link, headers=headers).text
+        resp = requests.get(link, headers=headers)
     except:
         print("Failed to open {}".format(link))
         return
+    link = resp.url.split('?')[0]
+    resp = resp.text
     splits = link.split('/')
     video_id = ''
     for ids in splits:
         if ids.isdigit():
             video_id = ids
-    target_video_audio_id = resp.split('"id":"{}"'.format(video_id))[1].split(
-        '"dash_prefetch_experimental":[')[1].split(']')[0].strip()
+    try:
+        target_video_audio_id = resp.split('"id":"{}"'.format(video_id))[1].split(
+            '"dash_prefetch_experimental":[')[1].split(']')[0].strip()
+    except:
+        target_video_audio_id = resp.split('"video_id":"{}"'.format(video_id))[1].split(
+            '"dash_prefetch_experimental":[')[1].split(']')[0].strip()
     list_str = "[{}]".format(target_video_audio_id)
     sources = json.loads(list_str)
     video_link = resp.split('"representation_id":"{}"'.format(sources[0]))[
