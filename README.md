@@ -3,6 +3,8 @@ This script is developed in Python and downloads Facebook videos with audio and 
 
 # URL types allowed:
 https://web.facebook.com/rabbids/videos/7350686091725184/
+https://www.facebook.com/reel/1234.....
+https://www.facebook.com/share/r/abcdef..../
 
 # How to setup:
 * Install this library using the command on your terminal/command prompt
